@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: rrrr
+spec:
+  selector:
+    matchLabels:
+      app: rawan
+  replicas: 3
+  template:
+    metadata:
+      name: my-web-app
+      labels:
+        app: rawan
+    spec:
+      containers:
+        - image: aymanrawan920/project-image
+          name: my-nginx-app
+          imagePullPolicy: IfNotPresent
+          resources:
+            limits:
+              memory: "512Mi"
+              cpu: "1"
+            requests:
+              memory: "100Mi"
+          ports:
+            - containerPort: 80
